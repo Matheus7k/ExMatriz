@@ -3,13 +3,12 @@
     private static void Main(string[] args)
     {
         double[,] matriz = new double[5, 3];
-        double mediaColuna;
 
         matriz = populaMatriz(matriz);
 
-        mediaColuna = mediaColunas(matriz);
+        mediaColunas(matriz);
 
-        imprimeMatriz(populaTerceiraColuna(matriz, mediaColuna));
+        imprimeMatriz(matriz);
 
         //Funções
         void imprimeMatriz(double[,] matriz)
@@ -18,7 +17,7 @@
             {
                 for (int coluna = 0; coluna < 3; coluna++)
                 {
-                    Console.Write($" | {matriz[linha, coluna]} | ");
+                    Console.Write($" | {matriz[linha, coluna].ToString("F2")} | ");
                 }
                 Console.WriteLine();
             }
@@ -32,36 +31,21 @@
             {
                 for(int coluna = 0; coluna < 2; coluna++)
                 {
-                    matriz[linha, coluna] = numero.NextDouble() * 100;
+                    matriz[linha, coluna] = (double) numero.Next(1000) / 100;
                 }           
             }
 
             return matriz;
         }
 
-        double mediaColunas(double[,] matriz)
+        double[,] mediaColunas(double[,] matriz)
         {
-            double media = 0;
+            double media;
 
             for (int linha = 0; linha < 5; linha++)
             {
-                for (int coluna = 0; coluna < 2; coluna++)
-                {
-                    media += matriz[linha, coluna] ;
-                }
-            }
-
-            return media /= 10;
-        }
-
-        double[,] populaTerceiraColuna(double[,] matriz, double media)
-        {
-            for(int coluna = 2; coluna == 2; coluna++)
-            {
-                for(int linha = 0; linha < 5; linha++)
-                {
-                    matriz[linha, coluna] = media;
-                }
+                media = (matriz[linha, 0] + matriz[linha, 1]) / 2;
+                matriz[linha, 2] = media;
             }
 
             return matriz;
