@@ -2,8 +2,8 @@
 {
     private static void Main(string[] args)
     {
-        float[,] matriz = new float[5, 3];
-        float mediaColuna;
+        double[,] matriz = new double[5, 3];
+        double mediaColuna;
 
         matriz = populaMatriz(matriz);
 
@@ -12,7 +12,7 @@
         imprimeMatriz(populaTerceiraColuna(matriz, mediaColuna));
 
         //Funções
-        void imprimeMatriz(float[,] matriz)
+        void imprimeMatriz(double[,] matriz)
         {
             for (int linha = 0; linha < 5; linha++)
             {
@@ -24,24 +24,24 @@
             }
         }
 
-        float[,] populaMatriz(float[,] martriz)
+        double[,] populaMatriz(double[,] matriz)
         {
-            Console.WriteLine("Digite 10 numeros inteiros ou reais para preeencher a matriz: ");
+            Random numero = new();
 
             for(int linha = 0; linha < 5; linha++)
             {
                 for(int coluna = 0; coluna < 2; coluna++)
                 {
-                    matriz[linha, coluna] = float.Parse(Console.ReadLine());
+                    matriz[linha, coluna] = numero.NextDouble() * 100;
                 }           
             }
 
             return matriz;
         }
 
-        float mediaColunas(float[,] matriz)
+        double mediaColunas(double[,] matriz)
         {
-            float media = 0;
+            double media = 0;
 
             for (int linha = 0; linha < 5; linha++)
             {
@@ -54,7 +54,7 @@
             return media /= 10;
         }
 
-        float[,] populaTerceiraColuna(float[,] matriz, float media)
+        double[,] populaTerceiraColuna(double[,] matriz, double media)
         {
             for(int coluna = 2; coluna == 2; coluna++)
             {
